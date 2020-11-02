@@ -39,7 +39,7 @@ import (
 	"encoding/binary"
 	"testing"
 
-	"github.com/vertica/vertica-sql-go/msgs"
+	"github.com/GlobalMaksimum/vertica-sql-go/msgs"
 )
 
 func makeColumnDef() *msgs.BERowDescMsg {

@@ -45,7 +45,7 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/vertica/vertica-sql-go/logger"
+	"github.com/GlobalMaksimum/vertica-sql-go/logger"
 )
 
 var (
@@ -565,7 +565,7 @@ func TestValueTypes(t *testing.T) {
 }
 
 // Issue 17 : Reusing prepared statements throws runtime errors
-// https://github.com/vertica/vertica-sql-go/issues/17
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/17
 func TestStmtReuseBug(t *testing.T) {
 	connDB := openConnection(t)
 	defer closeConnection(t, connDB)
@@ -599,7 +599,7 @@ func TestStmtReuseBug(t *testing.T) {
 }
 
 // Issue 20 : No columns returned when query returns no rows
-// https://github.com/vertica/vertica-sql-go/issues/20
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/20
 func TestColumnsWithNoRows(t *testing.T) {
 	connDB := openConnection(t)
 	defer closeConnection(t, connDB)
@@ -628,7 +628,7 @@ type threadedQuery struct {
 }
 
 // Issue 22 : Possible issue with wrong rows returned from current stmt results
-// https://github.com/vertica/vertica-sql-go/issues/22
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/22
 func TestStmtOrderingInThreads(t *testing.T) {
 	connDB := openConnection(t, "test_stmt_ordering_threads_pre")
 	connDB.SetMaxOpenConns(1)
@@ -690,7 +690,7 @@ func TestStmtOrderingInThreads(t *testing.T) {
 }
 
 // Issue 9 : Does it support COPY FROM / COPY TO ?
-// https://github.com/vertica/vertica-sql-go/issues/9
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/9
 func TestSTDINCopy(t *testing.T) {
 	connDB := openConnection(t, "test_stdin_copy_pre")
 	defer closeConnection(t, connDB, "test_stdin_copy_post")
@@ -733,7 +733,7 @@ func TestSTDINCopy(t *testing.T) {
 }
 
 // Issue 9 : Does it support COPY FROM / COPY TO ?
-// https://github.com/vertica/vertica-sql-go/issues/9
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/9
 func TestSTDINCopyWithStream(t *testing.T) {
 	connDB := openConnection(t, "test_stdin_copy_pre")
 	defer closeConnection(t, connDB, "test_stdin_copy_post")
@@ -776,7 +776,7 @@ func TestSTDINCopyWithStream(t *testing.T) {
 }
 
 // Issue 44 : error during parsing of prepared statement causes perpetual error state
-// https://github.com/vertica/vertica-sql-go/issues/44
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/44
 func TestHangAfterError(t *testing.T) {
 	connDB := openConnection(t)
 	defer closeConnection(t, connDB)
@@ -828,7 +828,7 @@ func testEnableResultCachePageSized(t *testing.T, connDB *sql.DB, ctx VerticaCon
 }
 
 // Issue 43 : response batching / cursor / lazy queries
-// https://github.com/vertica/vertica-sql-go/issues/43
+// https://github.com/GlobalMaksimum/vertica-sql-go/issues/43
 func TestEnableResultCache(t *testing.T) {
 	connDB := openConnection(t, "test_enable_result_cache_pre")
 	defer closeConnection(t, connDB, "test_enable_result_cache_post")

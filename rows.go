@@ -43,10 +43,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/vertica/vertica-sql-go/common"
-	"github.com/vertica/vertica-sql-go/logger"
-	"github.com/vertica/vertica-sql-go/msgs"
-	"github.com/vertica/vertica-sql-go/rowcache"
+	"github.com/GlobalMaksimum/vertica-sql-go/common"
+	"github.com/GlobalMaksimum/vertica-sql-go/logger"
+	"github.com/GlobalMaksimum/vertica-sql-go/msgs"
+	"github.com/GlobalMaksimum/vertica-sql-go/rowcache"
 )
 
 type rowStore interface {

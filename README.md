@@ -1,12 +1,12 @@
 # vertica-sql-go
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-orange.svg)](https://opensource.org/licenses/Apache-2.0)
-[![GoDoc](https://godoc.org/github.com/vertica/vertica-sql-go?status.svg)](https://godoc.org/github.com/vertica/vertica-sql-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-sql-go)](https://goreportcard.com/report/github.com/vertica/vertica-sql-go)
+[![GoDoc](https://godoc.org/github.com/GlobalMaksimum/vertica-sql-go?status.svg)](https://godoc.org/github.com/GlobalMaksimum/vertica-sql-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/GlobalMaksimum/vertica-sql-go)](https://goreportcard.com/report/github.com/GlobalMaksimum/vertica-sql-go)
 
 vertica-sql-go is a native Go adapter for the Vertica (http://www.vertica.com) database.
 
-Please check out [release notes](https://github.com/vertica/vertica-sql-go/releases) to learn about the latest improvements.
+Please check out [release notes](https://github.com/GlobalMaksimum/vertica-sql-go/releases) to learn about the latest improvements.
 
 vertica-sql-go has been tested with Vertica 9.2.0+ and Go 1.11.2.
 
@@ -14,12 +14,12 @@ vertica-sql-go has been tested with Vertica 9.2.0+ and Go 1.11.2.
 
 Source code for vertica-sql-go can be found at:
 
-https://github.com/vertica/vertica-sql-go
+https://github.com/GlobalMaksimum/vertica-sql-go
 
 Alternatively you can use the 'go get' variant to install the package into your local Go environment.
 
 ```sh
-go get github.com/vertica/vertica-sql-go
+go get github.com/GlobalMaksimum/vertica-sql-go
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ First ensure that you have the library checked out in your standard Go hierarchy
 import (
     "context"
     "database/sql"
-    "github.com/vertica/vertica-sql-go"
+    "github.com/GlobalMaksimum/vertica-sql-go"
 )
 ```
 
@@ -42,15 +42,15 @@ import (
 
 The vertica-sql-go driver supports multiple log levels, as defined in the following table
 
-| Log Level (int) | Log Level Name | Description |
-|-----------------|----------------|-------------|
-| 0               | TRACE          | Show function calls, plus all below |
-| 1               | DEBUG          | Show low-level functional operations, plus all below |
-| 2               | INFO           | Show important state information, plus all below |
+| Log Level (int) | Log Level Name | Description                                               |
+| --------------- | -------------- | --------------------------------------------------------- |
+| 0               | TRACE          | Show function calls, plus all below                       |
+| 1               | DEBUG          | Show low-level functional operations, plus all below      |
+| 2               | INFO           | Show important state information, plus all below          |
 | 3               | WARN           | (default) Show non-breaking abnormalities, plus all below |
-| 4               | ERROR          | Show breaking errors, plus all below |
-| 5               | FATAL          | Show process-breaking errors |
-| 6               | NONE           | Disable all log messages |
+| 4               | ERROR          | Show breaking errors, plus all below                      |
+| 5               | FATAL          | Show process-breaking errors                              |
+| 6               | NONE           | Disable all log messages                                  |
 
 and they can be set programmatically by calling the logger global level itself
 
@@ -75,7 +75,7 @@ Example:
 
 ```bash
 export VERTICA_SQL_GO_LOG_FILE=/var/log/vertica-sql-go.log
-``` 
+```
 
 ### Creating a connection
 
@@ -83,7 +83,7 @@ export VERTICA_SQL_GO_LOG_FILE=/var/log/vertica-sql-go.log
 connDB, err := sql.Open("vertica", myDBConnectString)
 ```
 
-where *myDBConnectString* is of the form:
+where _myDBConnectString_ is of the form:
 
 ```Go
 vertica://(user):(password)@(host):(port)/(database)?(queryArgs)
@@ -91,17 +91,17 @@ vertica://(user):(password)@(host):(port)/(database)?(queryArgs)
 
 Currently supported query arguments are:
 
-| Query Argument | Description | Values |
-|----------------|-------------|--------|
-| use_prepared_statements    | whether to use client-side query interpolation or server-side argument binding | 1 = (default) use server-side bindings |
-|                |             | 0 = user client side interpolation **(LESS SECURE)** |
-| connection_load_balance    | whether to enable connection load balancing on the client side | 0 = (default) disable load balancing |
-|                |             | 1 = enable load balancing |
-| tlsmode            | the ssl/tls policy for this connection | 'none' (default) = don't use SSL/TLS for this connection |
-|                |                                    | 'server' = server must support SSL/TLS, but skip verification **(INSECURE!)** |
-|                |                                    | 'server-strict' = server must support SSL/TLS |
+| Query Argument          | Description                                                                    | Values                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| use_prepared_statements | whether to use client-side query interpolation or server-side argument binding | 1 = (default) use server-side bindings                                        |
+|                         |                                                                                | 0 = user client side interpolation **(LESS SECURE)**                          |
+| connection_load_balance | whether to enable connection load balancing on the client side                 | 0 = (default) disable load balancing                                          |
+|                         |                                                                                | 1 = enable load balancing                                                     |
+| tlsmode                 | the ssl/tls policy for this connection                                         | 'none' (default) = don't use SSL/TLS for this connection                      |
+|                         |                                                                                | 'server' = server must support SSL/TLS, but skip verification **(INSECURE!)** |
+|                         |                                                                                | 'server-strict' = server must support SSL/TLS                                 |
 
-To ping the server and validate a connection (as the connection isn't necessarily created at that moment), simply call the *PingContext()* method.
+To ping the server and validate a connection (as the connection isn't necessarily created at that moment), simply call the _PingContext()_ method.
 
 ```Go
 ctx := context.Background()
@@ -213,7 +213,7 @@ This is very similar to a simple query, but has a slightly different result type
 res, err = connDB.ExecContext(ctx, "DROP TABLE IF EXISTS MyTable")
 ```
 
-In this instance, *res* will contain information (such as 'rows affected') about the result of this execution.
+In this instance, _res_ will contain information (such as 'rows affected') about the result of this execution.
 
 ### Performing an execute with arguments
 
@@ -268,18 +268,18 @@ err = tx.Rollback()
 
 The following transaction isolation levels are supported:
 
-* sql.LevelReadUncommitted <sup><b>&#8224;</b></sup>
-* sql.LevelReadCommitted
-* sql.LevelSerializable
-* sql.LevelRepeatableRead <sup><b>&#8224;</b></sup>
-* sql.LevelDefault
+-   sql.LevelReadUncommitted <sup><b>&#8224;</b></sup>
+-   sql.LevelReadCommitted
+-   sql.LevelSerializable
+-   sql.LevelRepeatableRead <sup><b>&#8224;</b></sup>
+-   sql.LevelDefault
 
- The following transaction isolation levels are unsupported:
+The following transaction isolation levels are unsupported:
 
-* sql.LevelSnapshot
-* sql.LevelLinearizable
+-   sql.LevelSnapshot
+-   sql.LevelLinearizable
 
- <b>&#8224;</b> Although Vertica supports the grammars for these transaction isolation levels, they are internally promoted to stronger isolation levels.
+<b>&#8224;</b> Although Vertica supports the grammars for these transaction isolation levels, they are internally promoted to stronger isolation levels.
 
 ## COPY modes Supported
 
@@ -296,7 +296,7 @@ This will process input from stdin until an EOF is reached.
 
 ### COPY FROM STDIN with alternate stream
 
-In your code, you may also supply a different io.Reader object (such as *File) from which to supply your data.
+In your code, you may also supply a different io.Reader object (such as \*File) from which to supply your data.
 Simply create a new VerticaContext, set the copy input stream, and provide this context to the execute call.
 An example:
 
@@ -323,8 +323,8 @@ import (
     "database/sql"
     "os"
 
-    _ "github.com/vertica/vertica-sql-go"
-    "github.com/vertica/vertica-sql-go/logger"
+    _ "github.com/GlobalMaksimum/vertica-sql-go"
+    "github.com/GlobalMaksimum/vertica-sql-go/logger"
 )
 
 func main() {
@@ -399,9 +399,10 @@ You can run a benchmark and profile it with a command like:
 and then explore it with `go tool pprof`. The `-run` part excludes the tests for brevity.
 
 ## Acknowledgements
-* @grzm (Github)
-* @watercraft (Github)
-* @fbernier (Github)
-* @mlh758 (Github) for the awesome work filling in and enhancing the driver in many important ways.
-* Tom Wall (Vertica) for the infinite patience and deep knowledge.
-* The creators and contributors of the vertica-python library, and members of the Vertica team, for their help in understanding the wire protocol.
+
+-   @grzm (Github)
+-   @watercraft (Github)
+-   @fbernier (Github)
+-   @mlh758 (Github) for the awesome work filling in and enhancing the driver in many important ways.
+-   Tom Wall (Vertica) for the infinite patience and deep knowledge.
+-   The creators and contributors of the vertica-python library, and members of the Vertica team, for their help in understanding the wire protocol.

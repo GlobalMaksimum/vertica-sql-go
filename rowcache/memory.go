@@ -33,7 +33,7 @@ package rowcache
 // THE SOFTWARE.
 
 import (
-	"github.com/vertica/vertica-sql-go/msgs"
+	"github.com/GlobalMaksimum/vertica-sql-go/msgs"
 )
 
 // MemoryCache is a simple in memory row store
